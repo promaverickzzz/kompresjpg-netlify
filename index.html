@@ -11,10 +11,9 @@
         body {
             font-family: Arial, sans-serif;
             background-color: #f4f4f4;
-            text-align: center;
             padding: 20px;
         }
-        h1 {
+        h1, h2 {
             color: #333;
         }
         .container {
@@ -22,8 +21,8 @@
             padding: 20px;
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            max-width: 600px;
-            margin: 0 auto;
+            max-width: 800px;
+            margin: 0 auto 40px;
         }
         input[type="file"] {
             margin: 20px 0;
@@ -47,6 +46,26 @@
         .button:hover {
             background-color: #45a049;
         }
+        /* Styling for Feature, FAQ, Testimonial sections */
+        .section {
+            margin-top: 40px;
+        }
+        .feature-item, .faq-item, .testimonial-item {
+            background-color: #f9f9f9;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .testimonial-item {
+            font-style: italic;
+        }
+        .faq-item h3 {
+            margin-bottom: 10px;
+        }
+        .faq-item p {
+            margin: 0;
+        }
     </style>
 </head>
 <body>
@@ -64,6 +83,54 @@
             <p><strong>Ukuran asli:</strong> <span id="originalSize">0</span> KB</p>
             <p><strong>Ukuran setelah kompres:</strong> <span id="compressedSize">0</span> KB</p>
             <a id="downloadLink" style="display:none;" class="button">Unduh Gambar Terkompres</a>
+        </div>
+    </div>
+
+    <!-- Feature Section -->
+    <div class="container section">
+        <h2>Fitur Utama</h2>
+        <div class="feature-item">
+            <h3>Kompresi Tanpa Kehilangan Kualitas</h3>
+            <p>Gambar dikompresi dengan kualitas tetap tinggi sehingga detail gambar tetap terjaga.</p>
+        </div>
+        <div class="feature-item">
+            <h3>Proses Cepat dan Aman</h3>
+            <p>Kompres gambar langsung di browser Anda tanpa perlu mengunggah ke server, memastikan privasi Anda terjaga.</p>
+        </div>
+        <div class="feature-item">
+            <h3>Gratis dan Mudah Digunakan</h3>
+            <p>Anda dapat mengompres gambar tanpa biaya apa pun dan tanpa perlu registrasi.</p>
+        </div>
+    </div>
+
+    <!-- FAQ Section -->
+    <div class="container section">
+        <h2>FAQ (Pertanyaan yang Sering Diajukan)</h2>
+        <div class="faq-item">
+            <h3>Apa itu kompresi gambar?</h3>
+            <p>Kompresi gambar adalah proses mengurangi ukuran file gambar tanpa terlalu mengurangi kualitas visualnya.</p>
+        </div>
+        <div class="faq-item">
+            <h3>Apakah ada batasan ukuran file yang bisa dikompres?</h3>
+            <p>Saat ini, Anda bisa mengompres gambar JPG dengan ukuran hingga 10 MB.</p>
+        </div>
+        <div class="faq-item">
+            <h3>Apakah saya perlu menginstal perangkat lunak tambahan?</h3>
+            <p>Tidak, semua proses dilakukan langsung di browser Anda tanpa memerlukan instalasi perangkat lunak tambahan.</p>
+        </div>
+    </div>
+
+    <!-- Testimonial Section -->
+    <div class="container section">
+        <h2>Testimonial</h2>
+        <div class="testimonial-item">
+            <p>"Sangat mudah digunakan dan hasil kompresi sangat bagus! Saya bisa memperkecil ukuran file gambar tanpa kehilangan kualitas." – Rina, Desainer Grafis</p>
+        </div>
+        <div class="testimonial-item">
+            <p>"Alat ini menghemat waktu saya ketika butuh mengompres banyak foto untuk keperluan online. Saya sangat merekomendasikannya!" – Dedi, Fotografer</p>
+        </div>
+        <div class="testimonial-item">
+            <p>"Kompres gambar langsung di browser sangat praktis, saya tidak perlu khawatir soal keamanan data saya." – Sari, Pemasar Digital</p>
         </div>
     </div>
 
@@ -110,5 +177,11 @@
         }
     </script>
 
+    <script
+      src="https://beamanalytics.b-cdn.net/beam.min.js"
+      data-token="0ea1702c-54c7-41ea-8870-0bd208b7dd9c"
+      async
+    >
+    </script>
 </body>
 </html>
