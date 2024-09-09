@@ -1,0 +1,2 @@
+# kompresjpg-netlify
+Kompres JPG
