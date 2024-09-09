@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Kompres JPG dengan mudah dan cepat langsung di browser Anda. Mengurangi ukuran file tanpa mengurangi kualitas gambar.">
+    <meta name="keywords" content="kompres jpg, kompres gambar, kompres foto, kompres jpg online, kompres jpeg">
+    <meta name="author" content="Nama Anda">
+    <title>Kompres JPG Online - Mengurangi Ukuran Gambar dengan Mudah</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            text-align: center;
+            padding: 20px;
+        }
+        h1 {
+            color: #333;
+        }
+        .container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        input[type="file"] {
+            margin: 20px 0;
+        }
+        canvas {
+            display: none;
+        }
+        #result {
+            margin-top: 20px;
+        }
+        .button {
+            background-color: #4CAF50;
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Kompres JPG Online</h1>
+        <p>Kompres file JPG Anda dengan cepat dan mudah langsung di browser Anda tanpa perlu mengunggah ke server.</p>
+        
+        <input type="file" id="imageInput" accept="image/jpeg">
+        <button class="button" onclick="compressImage()">Kompres Gambar</button>
+
+        <canvas id="canvas"></canvas>
+        
+        <div id="result">
+            <p><strong>Ukuran asli:</strong> <span id="originalSize">0</span> KB</p>
+            <p><strong>Ukuran setelah kompres:</strong> <span id="compressedSize">0</span> KB</p>
+            <a id="downloadLink" style="display:none;" class="button">Unduh Gambar Terkompres</a>
+        </div>
+    </div>
+
+    <script>
+        function compressImage() {
+            const input = document.getElementById('imageInput');
+            if (!input.files[0]) {
+                alert('Pilih gambar terlebih dahulu!');
+                return;
+            }
+
+            const file = input.files[0];
+            const originalSize = (file.size / 1024).toFixed(2);
+            document.getElementById('originalSize').textContent = originalSize;
+
+            const reader = new FileReader();
+            reader.onload = function (event) {
+                const img = new Image();
+                img.src = event.target.result;
+
+                img.onload = function () {
+                    const canvas = document.getElementById('canvas');
+                    const ctx = canvas.getContext('2d');
+
+                    const scale = 0.7; // Mengatur skala kompresi (0.1 - 1)
+                    canvas.width = img.width * scale;
+                    canvas.height = img.height * scale;
+
+                    ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+
+                    canvas.toBlob(function (blob) {
+                        const compressedSize = (blob.size / 1024).toFixed(2);
+                        document.getElementById('compressedSize').textContent = compressedSize;
+
+                        const downloadLink = document.getElementById('downloadLink');
+                        downloadLink.href = URL.createObjectURL(blob);
+                        downloadLink.download = 'kompres_jpg.jpg';
+                        downloadLink.style.display = 'inline-block';
+                    }, 'image/jpeg', 0.7); // Kompresi dengan kualitas 70%
+                }
+            };
+
+            reader.readAsDataURL(file);
+        }
+    </script>
+
+</body>
+</html>
